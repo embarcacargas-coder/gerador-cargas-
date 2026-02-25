@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de Cargas</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="container">
+    <h1>Painel Gerador de Cargas</h1>
+
+    <div class="form-grid">
+      <input type="text" id="nome" placeholder="Nome da carga">
+      <input type="text" id="peso" placeholder="Peso da carga">
+      <input type="text" id="origem" placeholder="Origem">
+      <input type="text" id="destino" placeholder="Destino">
+      <input type="text" id="valor" placeholder="Valor do frete">
+      <input type="text" id="veiculo" placeholder="Tipo de veículo">
+
+      <hr>
+
+      <input type="text" id="agenciador" placeholder="Nome do agenciador">
+      <input type="text" id="telefone" placeholder="Telefone do agenciador">
+    </div>
+
+    <button onclick="gerarHTML()">Gerar HTML</button>
+    <button onclick="baixarTXT()">Baixar .txt</button>
+
+    <textarea id="resultado" placeholder="O HTML gerado aparecerá aqui"></textarea>
+  </div>
+
+  <script src="template/html-matrix.js"></script>
+  <script src="js/app.js"></script>
+
+</body>
+</html>
