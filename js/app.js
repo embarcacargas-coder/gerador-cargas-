@@ -1,25 +1,25 @@
 function gerarHTML() {
   let htmlFinal = templateHTML;
 
-  const campos = {
-    "{{NOME}}": document.getElementById("nome").value,
-    "{{ORIGEM}}": document.getElementById("origem").value,
-    "{{DESTINO}}": document.getElementById("destino").value,
-    "{{PESO}}": document.getElementById("peso").value,
-    "{{VALOR}}": document.getElementById("valor").value,
-    "{{VEICULO}}": document.getElementById("veiculo").value,
-    "{{AGENCIADOR}}": document.getElementById("agenciador").value,
-    "{{TELEFONE}}": document.getElementById("telefone").value
-  };
+  htmlFinal = htmlFinal
+    .replaceAll("{{NOME}}", document.getElementById("nome").value)
+    .replaceAll("{{ORIGEM}}", document.getElementById("origem").value)
+    .replaceAll("{{DESTINO}}", document.getElementById("destino").value)
+    .replaceAll("{{PESO}}", document.getElementById("peso").value)
+    .replaceAll("{{VALOR}}", document.getElementById("valor").value)
+    .replaceAll("{{VEICULO}}", document.getElementById("veiculo").value)
+    .replaceAll("{{AGENCIADOR}}", document.getElementById("agenciador").value)
+    .replaceAll("{{CPF}}", document.getElementById("cpf").value)
+    .replaceAll("{{CNPJ}}", document.getElementById("cnpj").value)
+    .replaceAll("{{RAZAO}}", document.getElementById("razao").value)
+    .replaceAll("{{LOCALIDADE}}", document.getElementById("localidade").value);
 
-  for (let chave in campos) {
-    htmlFinal = htmlFinal.replaceAll(chave, campos[chave]);
-  }
+  const blob = new Blob([htmlFinal], { type: "text/html" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "carga-" + Date.now() + ".html";
+  a.click();
 
-  document.getElementById("resultado").value = htmlFinal;
+  // opcional limpeza de memória
+  setTimeout(() => URL.revokeObjectURL(a.href), 100);
 }
-
-function baixarTXT() {
-  const conteudo = document.getElementById("resultado").value;
-
-  const blob = new Blob([conteudo], { type: "text/plain"
